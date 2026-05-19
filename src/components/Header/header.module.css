@@ -1,0 +1,144 @@
+.header {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 40px;
+}
+
+.topHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.leftHeader {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  color: white;
+}
+
+.leftHeader h1 {
+  font-weight: 100;
+  font-size: clamp(20px, 5vw, 60px);
+}
+
+.leftHeader button {
+  background-color: #1f1f1f;
+  border: none;
+  color: grey;
+  text-align: left;
+  text-indent: 10px;
+  width: 300px;
+  padding: 15px;
+  border-radius: 20px;
+  font-size: clamp(16px, 2vw, 16px);
+}
+
+.leftHeader button:hover {
+  cursor: pointer;
+}
+
+.leftHeader button:focus {
+  outline: none;
+}
+
+.rightHeader {
+  display: flex;
+  gap: 10px;
+}
+
+.rightHeader h2 {
+  display: flex;
+  padding: 5px 25px;
+  gap: 5px;
+  border-radius: 50px;
+  align-items: center;
+  background-color: #1f1f1f;
+}
+
+.rightHeader h2:hover {
+  cursor: pointer;
+}
+
+.rightHeader h2 span {
+  color: grey;
+  font-size: clamp(10px, 1.5vw, 16px);
+}
+
+.bottomHeader {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  align-items: center;
+  gap: 10px;
+}
+
+.test {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  justify-content: left;
+}
+
+.bottomHeader ul {
+  display: flex;
+  list-style-type: none;
+  gap: 30px;
+}
+
+.bottomHeader ul li {
+  color: rgb(109, 109, 109);
+  font-size: clamp(16px, 1.5vw, 32px);
+}
+
+.bottomHeader ul li:hover {
+  cursor: pointer;
+}
+
+.bottomHeader ul .dashed {
+  color: white;
+  padding-bottom: 5px;
+  border-bottom: 2px solid white;
+}
+
+.bottomHeader h2 {
+  border: 1px solid grey;
+  display: flex;
+  border-radius: 50px;
+  margin-bottom: 5px;
+}
+
+.filters {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    gap: 10px;
+}
+
+.filters button {
+    color: white;
+    background-color: #2C2D2D;
+    padding: 3px 0px 3px 5px;
+    border: none;
+    border-radius: 5px;
+    
+    
+}
+
+.filters .installed span {
+    color: grey;
+    background-color: #1f1f1f;
+    padding: 10px ;
+    border-radius: 5px;
+}
+
+.filters .settings {
+    background-color: #1f1f1f;
+    padding: 5px 10px;
+    display: flex;
+    
+
+}
