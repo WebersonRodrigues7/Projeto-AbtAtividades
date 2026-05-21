@@ -3,7 +3,7 @@ import { HiUsers } from "react-icons/hi";
 import styles from "./header.module.css"
 import { IoIosAdd } from "react-icons/io";
 import { Settings2 } from "lucide-react";
-export default function Header () {
+export default function Header() {
 
 
     return (
@@ -15,18 +15,18 @@ export default function Header () {
                 </div>
                 <div className={styles.rightHeader}>
                     <h2>
-                        <FaBell size={20} color="white" />
+                        <FaBell size={15} color="white" />
                     </h2>
                     <h2>
-                        <HiUsers color="grey" size={30}/><span>22</span>
+                        <HiUsers color="grey" size={25} /><span>22</span>
                     </h2>
                     <h2>
-                        <FaUser color="grey" size={20}/>
+                        <FaUser color="grey" size={15} />
                     </h2>
                 </div>
             </section>
             <section className={styles.bottomHeader}>
-                <div className={styles.test}>
+                <div className={styles.list}>
                     <ul>
                         <li className={styles.dashed}>All games</li>
                         <li>Favorites</li>
@@ -34,16 +34,13 @@ export default function Header () {
                         <li>Go to's</li>
                         <li>Multiplayer</li>
                     </ul>
-                    <h2><IoIosAdd color="grey"/></h2>
+                    <h2><IoIosAdd color="grey" /></h2>
                 </div>
                 <div className={styles.filters}>
                     <button className={styles.installed}>Installed <span>All</span></button>
-                    <button className={styles.settings}><Settings2 color="white"/></button>
+                    <button className={styles.settings}><Settings2 color="white" /></button>
                 </div>
             </section>
-
-        
-        
         </header>
     )
 }
