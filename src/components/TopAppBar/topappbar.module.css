@@ -1,0 +1,52 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 15.5%;
+  -webkit-app-region: drag;
+
+  width: 84.5%;
+  height: 35px;
+  justify-content: end;
+  display: flex;
+  align-items: center;
+
+  background: #1b1b1b;
+
+  user-select: none;
+
+  z-index: 9999;
+}
+
+.topbar button {
+  width: 46px;
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.topbar button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.closeButton:hover {
+  background: #e81123 !important;
+}
+
+@media (max-width: 1600px) {
+  .topbar {
+    left: 30.5%;
+    width: 70%;
+  }
+}

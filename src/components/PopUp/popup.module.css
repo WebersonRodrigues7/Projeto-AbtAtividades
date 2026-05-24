@@ -1,0 +1,36 @@
+.popup {
+  position: fixed;
+
+  bottom: 30px;
+  right: 30px;
+
+  padding: 14px 18px;
+
+  background-color: #181818;
+
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  animation: popup 0.2s ease;
+}
+
+.popup p {
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
