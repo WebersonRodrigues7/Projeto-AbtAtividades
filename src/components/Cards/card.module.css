@@ -20,7 +20,7 @@
 
   font-family: Arial, Helvetica, sans-serif;
 
-  transition: 0.2s ease;
+   transition: background-color 0.2s ease;
 }
 
 .cards:hover {
@@ -45,7 +45,7 @@
   object-fit: cover;
 
   border-radius: 12px;
-
+  will-change: transform;
   transition: 0.25s ease;
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./minicard.module.css";
 import Popup from "../PopUp/PopUp";
+import gsap from "gsap";
 
 interface MiniCardProps {
     title: string;
@@ -18,6 +19,16 @@ export default function MiniCard() {
                 setData(data.slice(0, 5));
             });
     }, []);
+
+    useEffect(() => {
+        gsap.fromTo(`.${styles.minicard}`, {
+            opacity: 0
+        }, {
+            opacity: 1,
+            duration: 3,
+            stagger: 0.15
+        })
+    }, [data])
 
     function handlePopup() {
         setPopup(true)

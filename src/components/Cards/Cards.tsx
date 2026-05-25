@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./card.module.css";
 import { IoIosMore, IoMdSettings } from "react-icons/io";
 import Popup from "../PopUp/PopUp";
 import { useInstallStore } from "../../store/installeStore";
-import Modal from "../ModalGame/modal";
 import { FaHeart, FaPlay } from "react-icons/fa";
 import { MdLabel } from "react-icons/md";
+import gsap from "gsap";
 
 interface CardsProps {
   title: string;
@@ -19,13 +19,30 @@ export default function Cards() {
   const [modal, setModal] = useState<number | null>(null);
   const installed = useInstallStore((state) => state.install);
 
+
+
+
   useEffect(() => {
     fetch("https://api-games-pearl.vercel.app/games")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-      });
+      })
+
   }, []);
+
+  useEffect(() => {
+    gsap.fromTo(`.${styles.cards}`, {
+      opacity: 0,
+      y: 20
+    }, {
+      opacity: 1,
+      duration: 3,
+      y: 0,
+      stagger: 0.1
+
+    })
+  }, [data])
 
   function handlePopup() {
     setPopup(true);

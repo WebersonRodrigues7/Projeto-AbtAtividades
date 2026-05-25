@@ -39,7 +39,7 @@ export default function Aside() {
             Store
           </li>
 
-          <li onClick={handlePopup} className={styles.library}>
+          <li className={styles.library}>
             <span><PiSquaresFourFill size={22} /></span>
             Library
           </li>
