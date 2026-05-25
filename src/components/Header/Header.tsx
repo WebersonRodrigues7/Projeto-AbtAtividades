@@ -45,7 +45,7 @@ export default function Header() {
         <div className={styles.leftHeader}>
           <h1>Library</h1>
 
-          <button className={styles.searchButton}>Search</button>
+          <input placeholder="Search" className={styles.searchButton} />
         </div>
 
         <div className={styles.rightHeader}>
