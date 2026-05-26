@@ -13,7 +13,7 @@ Uma dashboard desktop desenvolvida para fins de teste técnico utilizando Tauri 
 - Git
 
 ----
-API GAMES
+## API
 
 https://api-games-pearl.vercel.app/games - GET
 
