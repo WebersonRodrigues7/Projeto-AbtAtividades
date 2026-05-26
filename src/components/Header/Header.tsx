@@ -11,7 +11,7 @@ import { useInstallStore } from "../../store/installeStore";
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [popup, setPopup] = useState(false)
-  const { install, setInstall } = useInstallStore()
+  const { install, setInstall, search, setSearch } = useInstallStore();
   function handlePopup() {
 
     setPopup(true)
@@ -45,7 +45,10 @@ export default function Header() {
         <div className={styles.leftHeader}>
           <h1>Library</h1>
 
-          <input placeholder="Search" className={styles.searchButton} />
+          <input placeholder="Search"
+            className={styles.searchButton}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)} />
         </div>
 
         <div className={styles.rightHeader}>
@@ -86,8 +89,8 @@ export default function Header() {
         </div>
 
         <div className={styles.filters}>
-          <button onClick={setInstall}  className={styles.installed}>
-            {install ? "Installed" : "All Games"} 
+          <button onClick={setInstall} className={styles.installed}>
+            {install ? "Installed" : "All Games"}
           </button>
 
           <button onClick={handlePopup} className={styles.settings}>

@@ -1,16 +1,23 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-type InstalledStore = {
-    install: boolean
-    setInstall: () => void
-}
+type InstallStore = {
+  install: boolean;
+  search: string;
+  setInstall: () => void;
+  setSearch: (value: string) => void;
+};
 
+export const useInstallStore = create<InstallStore>((set) => ({
+  install: false,
+  search: '',
 
-export const useInstallStore = create<InstalledStore>((set) => ({
-    install: false,
+  setInstall: () =>
+    set((state) => ({
+      install: !state.install,
+    })),
 
-    setInstall: () =>
-        set((state) => ({
-            install: !state.install
-        }))
-}))
+  setSearch: (value) =>
+    set({
+      search: value,
+    }),
+}));

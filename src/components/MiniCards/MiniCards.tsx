@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "./minicard.module.css";
-import Popup from "../PopUp/PopUp";
 import gsap from "gsap";
 
 interface MiniCardProps {
@@ -8,39 +7,37 @@ interface MiniCardProps {
     img: string;
 }
 
-export default function MiniCard() {
+interface MiniCardComponentProps {
+    handlePopup: () => void;
+}
+
+export default function MiniCard({ handlePopup }: MiniCardComponentProps) {
     const [data, setData] = useState<MiniCardProps[]>([]);
-    const [popup, setPopup] = useState(false)
 
     useEffect(() => {
         fetch("https://api-games-pearl.vercel.app/games")
-            .then(res => res.json())
-            .then(data => {
+            .then((res) => res.json())
+            .then((data) => {
                 setData(data.slice(0, 5));
             });
     }, []);
 
     useEffect(() => {
-        gsap.fromTo(`.${styles.minicard}`, {
-            opacity: 0
-        }, {
-            opacity: 1,
-            duration: 3,
-            stagger: 0.15
-        })
-    }, [data])
-
-    function handlePopup() {
-        setPopup(true)
-
-        setTimeout(() => {
-            setPopup(false)
-        }, 3000)
-    }
+        gsap.fromTo(
+            `.${styles.minicard}`,
+            {
+                opacity: 0,
+            },
+            {
+                opacity: 1,
+                duration: 3,
+                stagger: 0.15,
+            }
+        );
+    }, [data]);
 
     return (
         <section className={styles.secMiniCard}>
-            {popup && <Popup />}
             {data.map((item, i) => (
                 <div onClick={handlePopup} className={styles.minicard} key={i}>
                     <div className={styles.imageContainer}>
@@ -52,7 +49,6 @@ export default function MiniCard() {
                     </div>
 
                     <h3>{item.title}</h3>
-                    
                 </div>
             ))}
         </section>

@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./card.module.css";
+
 import { IoIosMore, IoMdSettings } from "react-icons/io";
-import Popup from "../PopUp/PopUp";
-import { useInstallStore } from "../../store/installeStore";
 import { FaHeart, FaPlay } from "react-icons/fa";
 import { MdLabel } from "react-icons/md";
+
 import gsap from "gsap";
+
+import Popup from "../PopUp/PopUp";
+import { useInstallStore } from "../../store/installeStore";
 
 interface CardsProps {
   title: string;
@@ -17,32 +20,33 @@ export default function Cards() {
   const [data, setData] = useState<CardsProps[]>([]);
   const [popup, setPopup] = useState(false);
   const [modal, setModal] = useState<number | null>(null);
+
   const installed = useInstallStore((state) => state.install);
-
-
-
+  const search = useInstallStore((state) => state.search);
 
   useEffect(() => {
     fetch("https://api-games-pearl.vercel.app/games")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-      })
-
+      });
   }, []);
 
   useEffect(() => {
-    gsap.fromTo(`.${styles.cards}`, {
-      opacity: 0,
-      y: 20
-    }, {
-      opacity: 1,
-      duration: 3,
-      y: 0,
-      stagger: 0.1
-
-    })
-  }, [data])
+    gsap.fromTo(
+      `.${styles.cards}`,
+      {
+        opacity: 0,
+        y: 20,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.08,
+      }
+    );
+  }, [data]);
 
   function handlePopup() {
     setPopup(true);
@@ -60,11 +64,18 @@ export default function Cards() {
         {data
           .filter((item) => {
             if (!installed) return true;
-
             return item.installed;
           })
+          .filter((item) =>
+            item.title.toLowerCase().includes(search.toLowerCase())
+          )
           .map((item, i) => (
-            <div className={styles.cards} key={i}>
+            <div
+              className={`${styles.cards} ${
+                modal === i ? styles.active : ""
+              }`}
+              key={i}
+            >
               <div className={styles.imageContainer}>
                 <img
                   src={`https://api-games-pearl.vercel.app/${item.img}`}
@@ -72,9 +83,7 @@ export default function Cards() {
                 />
 
                 <div className={styles.overlay}>
-                  <button onClick={handlePopup}>
-                    Play
-                  </button>
+                  <button onClick={handlePopup}>Play</button>
                 </div>
               </div>
 
@@ -83,21 +92,55 @@ export default function Cards() {
                   <h1>{item.title}</h1>
                 </div>
 
-                <button onClick={() => setModal(modal === i ? null : i)}>
+                <button
+                  onClick={() =>
+                    setModal(modal === i ? null : i)
+                  }
+                >
                   <IoIosMore size={18} />
                 </button>
-                {modal === i && (
-                  <section className={styles.modal}>
-                    <ul>
-                      <li onClick={handlePopup}><span><FaPlay /></span>Launch</li>
-                      <li onClick={handlePopup}><span><MdLabel /></span>Go to store page</li>
-                      <li onClick={handlePopup}><span><FaHeart /></span>Add to favorites</li>
-                      <li onClick={handlePopup}><span></span>Add to collection</li>
-                      <li onClick={handlePopup}><span><IoMdSettings /></span>Manage</li>
-                    </ul>
-                  </section>
-                )}
               </div>
+
+              {modal === i && (
+                <section className={styles.modal}>
+                  <ul>
+                    <li onClick={handlePopup}>
+                      <span>
+                        <FaPlay />
+                      </span>
+                      Launch
+                    </li>
+
+                    <li onClick={handlePopup}>
+                      <span>
+                        <MdLabel />
+                      </span>
+                      Go to store page
+                    </li>
+
+                    <li onClick={handlePopup}>
+                      <span>
+                        <FaHeart />
+                      </span>
+                      Add to favorites
+                    </li>
+
+                    <li onClick={handlePopup}>
+                      <span>
+                        <MdLabel />
+                      </span>
+                      Add to collection
+                    </li>
+
+                    <li onClick={handlePopup}>
+                      <span>
+                        <IoMdSettings />
+                      </span>
+                      Manage
+                    </li>
+                  </ul>
+                </section>
+              )}
             </div>
           ))}
       </section>
