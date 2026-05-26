@@ -5,12 +5,17 @@ Uma dashboard desktop desenvolvida para fins de teste técnico utilizando Tauri 
 ---
 
 ## Tecnologias Utilizadas
-
+- Express / Prisma
 - ReactJS
 - Rust
 - Tauri
 - Node.js
 - Git
+
+----
+API GAMES
+
+https://api-games-pearl.vercel.app/games - GET
 
 ---
 
