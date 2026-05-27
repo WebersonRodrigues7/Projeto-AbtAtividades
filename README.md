@@ -1,16 +1,21 @@
 # Dashboard - Loja de Jogos
 
-Uma dashboard desktop desenvolvida para fins de teste técnico utilizando Tauri + React, com foco em autenticação, organização de componentes e experiência moderna de interface.
+Uma dashboard desktop desenvolvida para fins de teste técnico utilizando Tauri + React, com foco em organização de componentes e experiência moderna de interface.
 
 ---
 
 ## Tecnologias Utilizadas
-
+- Express / Prisma
 - ReactJS
 - Rust
 - Tauri
 - Node.js
 - Git
+
+----
+## API
+
+https://api-games-pearl.vercel.app/games - GET
 
 ---
 
