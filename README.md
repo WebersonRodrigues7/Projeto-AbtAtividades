@@ -24,6 +24,10 @@ https://api-games-pearl.vercel.app/games - GET
 ```bash
 git clone https://github.com/WebersonRodrigues7/Projeto-AbtAtividades.git
 
+Abrir o projeto-abtatividades.exe
+
+OU
+
 cd Projeto-AbtAtividades
 
 npm install
